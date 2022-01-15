@@ -51,15 +51,6 @@ describe('TodosComponent', () => {
     expect(component.todos.findIndex(t => t.id === todo.id)).toBeGreaterThan(-1);
   });
 
-  it('should throw error returned from the server when adding a new todo', () => {
-    const errorMsg = 'Error adding todo';
-    const spy = spyOn(service, 'add').and.throwError(errorMsg);
-
-    component.add();
-
-    expect(spy).toThrow(errorMsg);
-  });
-  
   it('should set message property if server returns and error when adding a new todo', () => {
     const errorMsg = 'Error adding todo';
     const spy = spyOn(service, 'add').and.returnValue(throwError(errorMsg));
